@@ -1,5 +1,13 @@
 import axios from "axios";
 
+const sanitizeResponse = (res) => {
+	return {
+		data:res.data,
+		headers:res.headers,
+		status:res.status,
+	}
+} 
+
 /**
  * Fetch the top projects from https://www.khanacademy.org/computing/computer-programming/browse
  *
@@ -22,7 +30,7 @@ export async function fetchTopScratchpads(opts) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/scratchpads/top?casing=camel&sort=${sort}&page=${page}&limit=${limit}&subject=all&topic_id=xffde7c31&lang=en`
 	);
-	return response;
+	return sanitizeResponse(response);
 }
 
 /**
@@ -41,7 +49,7 @@ export async function fetchUserScratchpads(opts) {
 			opts.user
 		}&sort=1&page=0&limit=10&subject=all&lang=en`
 	);
-	return response;
+	return sanitizeResponse(response);
 }
 
 /**
@@ -58,5 +66,5 @@ export async function fetchScratchpad(opts) {
 			opts.id
 		}`
 	);
-	return response;
+	return sanitizeResponse(response);
 }
