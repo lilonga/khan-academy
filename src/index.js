@@ -18,7 +18,7 @@ const sanitizeResponse = (res) => {
  * @return {Object} Promise
  * @public
  */
-export async function fetchTopScratchpads(opts) {
+export async function fetchTopScratchpads(opts = {}) {
 	const { page = 0, limit = 5, type = "hot" } = opts;
 	let types = {
 		recent: 2,
@@ -43,7 +43,7 @@ export async function fetchTopScratchpads(opts) {
  * @return {Object} Promise
  * @public
  */
-export async function fetchUserScratchpads(opts) {
+export async function fetchUserScratchpads(opts = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/user/scratchpads?casing=camel&username=${
 			opts.user
@@ -60,7 +60,7 @@ export async function fetchUserScratchpads(opts) {
  * @return {Object} Promise
  * @public
  */
-export async function fetchScratchpad(opts) {
+export async function fetchScratchpad(opts = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/show_scratchpad?scratchpad_id=${
 			opts.id
