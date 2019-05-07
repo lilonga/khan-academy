@@ -60,11 +60,29 @@ export async function fetchUserScratchpads(options = {}) {
  * @return {Object} Promise
  * @public
  */
-export async function fetchScratchpad(opts = {}) {
+export async function fetchScratchpad(options = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/show_scratchpad?scratchpad_id=${
-			opts.id
+			options.id
 		}`
 	);
 	return sanitizeResponse(response);
 }
+
+/**
+ * Fetch specific challenge
+ *
+ * @param {Object} options
+ * @param {String} options.id id of challenge
+ * @return {Object} Promise
+ * @public
+ */
+export async function fetchChallenge(options = {}) {
+	const response = await axios.get(
+		`https://www.khanacademy.org/api/internal/show_challenge?challenge_id=${
+			options.id
+		}`
+	);
+	return sanitizeResponse(response);
+}
+
