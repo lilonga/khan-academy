@@ -9,7 +9,7 @@ const sanitizeResponse = (res) => {
 } 
 
 /**
- * Fetch the top projects from https://www.khanacademy.org/computing/computer-programming/browse
+ * Get the top projects from https://www.khanacademy.org/computing/computer-programming/browse
  *
  * @param {Object} options
  * @param {String} options.sortType=hot Sort by "recent", "hot", "votes" or contest
@@ -18,7 +18,7 @@ const sanitizeResponse = (res) => {
  * @return {Object} Promise
  * @public
  */
-export async function fetchTopScratchpads(options = {}) {
+export async function getTopScratchpads(options = {}) {
 	const { page = 0, limit = 5, type = "hot" } = options;
 	let types = {
 		recent: 2,
@@ -34,16 +34,16 @@ export async function fetchTopScratchpads(options = {}) {
 }
 
 /**
- * Fetch all projects by username
+ * Get all projects by username
  *
  * @param {Object} options
- * @param {String} options.user fetch projects from this user
+ * @param {String} options.user get projects from this user
  * @param {Number} options.page=0 Page numer.
  * @param {Number} options.limit=5 Number of results.
  * @return {Object} Promise
  * @public
  */
-export async function fetchUserScratchpads(options = {}) {
+export async function getUserScratchpads(options = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/user/scratchpads?casing=camel&username=${
 			options.user
@@ -53,14 +53,14 @@ export async function fetchUserScratchpads(options = {}) {
 }
 
 /**
- * Fetch specific project
+ * get specific project
  *
  * @param {Object} options
  * @param {String} options.id id of scratchpad
  * @return {Object} Promise
  * @public
  */
-export async function fetchScratchpad(options = {}) {
+export async function getScratchpad(options = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/show_scratchpad?scratchpad_id=${
 			options.id
@@ -70,14 +70,14 @@ export async function fetchScratchpad(options = {}) {
 }
 
 /**
- * Fetch specific challenge
+ * Get specific challenge
  *
  * @param {Object} options
  * @param {String} options.id id of challenge
  * @return {Object} Promise
  * @public
  */
-export async function fetchChallenge(options = {}) {
+export async function getChallenge(options = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/show_challenge?challenge_id=${
 			options.id
