@@ -18,8 +18,8 @@ const sanitizeResponse = (res) => {
  * @return {Object} Promise
  * @public
  */
-export async function fetchTopScratchpads(opts = {}) {
-	const { page = 0, limit = 5, type = "hot" } = opts;
+export async function fetchTopScratchpads(options = {}) {
+	const { page = 0, limit = 5, type = "hot" } = options;
 	let types = {
 		recent: 2,
 		hot: 3,
@@ -43,10 +43,10 @@ export async function fetchTopScratchpads(opts = {}) {
  * @return {Object} Promise
  * @public
  */
-export async function fetchUserScratchpads(opts = {}) {
+export async function fetchUserScratchpads(options = {}) {
 	const response = await axios.get(
 		`https://www.khanacademy.org/api/internal/user/scratchpads?casing=camel&username=${
-			opts.user
+			options.user
 		}&sort=1&page=0&limit=10&subject=all&lang=en`
 	);
 	return sanitizeResponse(response);
