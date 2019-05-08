@@ -14,6 +14,10 @@ npm install --save @lilonga/khan-academy-api
 ## Documentation
 [View Documentation](https://khan-academy-api-docs.lilo.now.sh/)
 
+## Tests
+```bash
+yarn run test-integration
+```
 
 ## License
 
