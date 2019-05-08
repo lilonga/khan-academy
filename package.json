@@ -1,7 +1,7 @@
 {
   "name": "@lilonga/khan-academy-api",
-  "description":"Interact with various Khan Academy APIs. Focused on internal programming-related endpoints",
-  "version": "0.0.0",
+  "description": "Interact with various Khan Academy APIs. Focused on internal programming-related endpoints",
+  "version": "0.0.2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
@@ -20,9 +20,10 @@
     "rollup-plugin-node-resolve": "^4.2.3"
   },
   "scripts": {
-    "now-build":"yarn docs",
-    "docs":" documentation build src/** -f html -o docs",
+    "now-build": "yarn docs",
+    "docs": " documentation build src/** -f html -o docs",
     "build": "rollup -c",
+    "prepublish": "yarn run build",
     "dev": "rollup -c -w",
     "test-integration": "jest --watch int.test",
     "test-unit": "jest -w unit.test"
